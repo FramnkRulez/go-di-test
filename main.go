@@ -74,7 +74,7 @@ func main() {
 	var store keyvaluestore = kvs.(keyvaluestore)
 	store.AddValue("one", "two")
 
-	// Method #2 (wrapper) - resolve keyvaluestore directly by wrapping container
+	// Method #2 (wrapper) - resolve keyvaluestore without casting using a wrapper func
 	store2, _ := resolveKeyValueStore(c)
 	store2.AddValue("three", "four")
 }
