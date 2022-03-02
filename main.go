@@ -66,7 +66,11 @@ func main() {
 
 	// create our container and register our dependencies with it
 	var c di.Container
+
+	// register the logger interface (implemented by loggerImpl)
 	c.Register(reflect.TypeOf((*logger)(nil)).Elem(), reflect.TypeOf(loggerImpl{}))
+
+	// register the keyvaluestore interface (implemented by InMemoryKeyValueStore, depends on logger)
 	c.Register(reflect.TypeOf((*keyvaluestore)(nil)).Elem(), reflect.TypeOf(InMemoryKeyValueStore{}))
 
 	// Method #1 (no wrapper) - resolve keyvaluestore from dependencies by force casting return
